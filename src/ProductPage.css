@@ -1,0 +1,18 @@
+.ProductDetailsPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid black;
+    margin: 5px;
+    align-items: center;
+}
+
+.ProductDetailsPage img, h3, p {
+    max-width: 200px;
+    max-height: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
+

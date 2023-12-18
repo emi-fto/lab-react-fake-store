@@ -1,23 +1,68 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import "../ProductPage.css";
 
 function ProductDetailsPage() {
-  // The state variable `product` is currently an empty object {},
-  // but you should use it to store the response from the Fake Store API (the product details).
+
+  const { productId } = useParams();
   const [product, setProduct] = useState({});
+ /*  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); */
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+      
+      if (response.ok) {
+        const productData = await response.json();
+        setProduct(productData);
+      } else {
+        console.error(`Failed to fetch product details. Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
+  };
+
+  useEffect(() => {
+    console.log('component mounted');
+    fetchData();
+  }, [productId]);
 
 
-  // The `productId` coming from the URL parameter is available in the URL path.
-  // You can access it with the `useParams` hook from react-router-dom.
+/*   useEffect(() => {
+  fetch(`https://fakestoreapi.com/products/${productId}`)
+  .then(res => res.json())
+  .then(json => {
+    console.log(json);
+    setProduct(json);
+    setLoading(false);
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+    setError(error);
+    setLoading(false);
+  });
+}, [productId]);
 
+if (loading) {
+  return <p>Loading...</p>;
+}
 
-  // To fetch the product details, set up an effect with the `useEffect` hook:
-
-
+if (error) {
+  return <p>Error: {error.message}</p>;
+} */
 
   return (
     <div className="ProductDetailsPage">
-    {/* Render product details here */}
+          <img src={product.image} alt={product.title}/>
+          <h3><b>{product.title}</b></h3>
+          <p>{product.category}</p>
+          <p>{product.price}</p>
+          <p>{product.description}</p>
+          <Link to={"/"}>
+          <button type="submit">Back</button>
+          </Link> 
     </div>
   );
 }
