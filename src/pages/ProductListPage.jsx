@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../ListPage.css";
 import React, { useEffect, useState } from "react";
-import ProductDetailsPage from "./ProductDetailsPage";
+
 
 function ProductListPage() {
   const [products, setProducts] = useState([]);
@@ -62,8 +62,7 @@ function ProductListPage() {
           <h3><b>{product.title}</b></h3>
           <p>{product.category}</p>
           <p>${product.price}</p>
-          <p className="description">{product.description}</p>   
-          <ProductDetailsPage />  
+          <p className="description">{product.description}</p>  
         </div>
         </Link> 
       ))}
