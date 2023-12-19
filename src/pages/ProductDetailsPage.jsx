@@ -30,7 +30,7 @@ function ProductDetailsPage() {
   }, [productId]);
 
 
-/*   useEffect(() => {
+ /*  useEffect(() => {
   fetch(`https://fakestoreapi.com/products/${productId}`)
   .then(res => res.json())
   .then(json => {
@@ -59,9 +59,9 @@ if (error) {
           <h3><b>{product.title}</b></h3>
           <p>{product.category}</p>
           <p>{product.price}</p>
-          <p>{product.description}</p>
-          <Link to={"/"}>
-          <button type="submit">Back</button>
+          <p className="description">{product.description}</p>
+          <Link to="/">
+          <button className="btn-secondary" type="button">Back</button>
           </Link> 
     </div>
   );

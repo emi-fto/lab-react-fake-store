@@ -10,6 +10,10 @@
 .Product img, h3, p {
     max-width: 200px;
     max-height: 200px;
+    
+}
+
+.description {
     white-space: nowrap;
     overflow: hidden;
     overflow-wrap: break-word;
